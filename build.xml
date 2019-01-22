@@ -1,0 +1,31 @@
+<project>
+
+	<target name="clean">
+		<delete dir="build"/>
+		<delete file="Main.jar"/>
+		<delete file="Tester.jar"/>
+		<delete dir="out/production"/>
+	</target>
+
+	<target name="compile">
+		<mkdir dir="build/classes"/>
+		<javac srcdir="src" destdir="build/classes"/>
+	</target>
+
+	<target name="Tester" depends="compile">
+		<jar destfile="Tester.jar" basedir="build/classes">
+			<manifest>
+				<attribute name="Main-Class" value="tester.Tester"/>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="Main" depends="compile">
+		<jar destfile="Main.jar" basedir="build/classes">
+			<manifest>
+				<attribute name="Main-Class" value="problem.Main"/>
+			</manifest>
+		</jar>
+	</target>
+
+</project>
